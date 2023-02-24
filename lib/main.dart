@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'animations/border_animation.dart';
-import 'animations/linear_animation.dart';
+import 'animations/speedometer_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +15,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData.dark(),
-      home: GradientPeogressBar(),
+      home: const SpeedoMeterScreen(),
     );
   }
 }
