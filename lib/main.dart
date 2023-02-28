@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'animations/speedometer_screen.dart';
+import 'animations/roadmap.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData.dark(),
-      home: const SpeedoMeterScreen(),
+      home: const FlutterRoadMap(),
     );
   }
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
+import '../package.dart';
+
 class SpeedoMeterScreen extends StatefulWidget {
   const SpeedoMeterScreen({super.key});
 
@@ -24,6 +26,17 @@ class _SpeedoMeterScreenState extends State<SpeedoMeterScreen> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
+              ResponsiveWidgetContainer(
+                  columnCount: 2,
+                  portraitSettings: [1, 1],
+                  landscapeSettings: [0.7, 1.3],
+                  child: Column(children: [
+                    Container(
+                      color: Colors.red,
+                      height: 100,
+                    ),
+                    Container()
+                  ])),
               TweenAnimationBuilder(
                   tween: Tween<double>(begin: 0.0, end: _speed),
                   duration: const Duration(seconds: 2),
