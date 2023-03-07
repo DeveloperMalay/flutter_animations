@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:opacitydemoapp/button_animation/glowing_animation.dart';
+import 'package:opacitydemoapp/screens/login_screen.dart';
 import 'animations/roadmap.dart';
 import 'button_animation/animated_buttons.dart';
 import 'loader/loader_widget.dart';
@@ -15,10 +17,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData.dark(),
-      home: WaterLoadingAnimation(),
-    );
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: ThemeData.dark(),
+        home: const LoginScreen());
   }
 }

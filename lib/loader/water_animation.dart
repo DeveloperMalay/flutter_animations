@@ -41,7 +41,9 @@ class _WaterLoadingAnimationState extends State<WaterLoadingAnimation>
                 height: 200.0,
                 child: LiquidCircularProgressIndicator(
                   value: _waveAnimation.value, // Set initial value
-                  valueColor: const AlwaysStoppedAnimation(Colors.blue),
+                  valueColor: const AlwaysStoppedAnimation(
+                    Colors.blue,
+                  ),
                   backgroundColor: Colors.white,
                   borderColor: Colors.blue,
                   borderWidth: 5.0,
