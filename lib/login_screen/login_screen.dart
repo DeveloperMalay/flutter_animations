@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:opacitydemoapp/screens/popup.dart';
-import '../button_animation/glowing_animation.dart';
+import 'package:opacitydemoapp/login_screen/popup.dart';
+import 'glowing_animation.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});

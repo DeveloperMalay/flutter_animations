@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:opacitydemoapp/button_animation/glowing_animation.dart';
-import 'package:opacitydemoapp/screens/login_screen.dart';
+import 'package:opacitydemoapp/login_screen/glowing_animation.dart';
+import 'package:opacitydemoapp/login_screen/login_screen.dart';
 import 'animations/roadmap.dart';
 import 'button_animation/animated_buttons.dart';
 import 'loader/loader_widget.dart';
