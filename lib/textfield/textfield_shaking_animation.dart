@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import '../login_screen/glowing_animation.dart';
 
 class TextFieldShakingAnimation extends StatefulWidget {
@@ -25,7 +26,12 @@ class _TextFieldShakingAnimationState extends State<TextFieldShakingAnimation>
   }
 
   void shake() {
-    controller.forward();
+    if (controller.status == AnimationStatus.completed) {
+      controller.reset();
+      controller.forward();
+    } else {
+      controller.forward();
+    }
   }
 
   @override
@@ -124,9 +130,8 @@ class _TextFieldShakingAnimationState extends State<TextFieldShakingAnimation>
                   if (_emailEditingController.text.isEmpty ||
                       _passwordEditingController.text.isEmpty) {
                     shake();
-                    Timer(Duration(seconds: 3), () {
-                      setState(() {});
-                    });
+                  } else {
+                    Lottie.asset('assets/check.json');
                   }
                 },
                 text: 'Login',

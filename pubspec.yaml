@@ -43,6 +43,7 @@ dependencies:
   loading_animation_widget: ^1.2.0+4
   liquid_progress_indicator: ^0.4.0
   persistent_bottom_nav_bar: ^5.0.2
+  lottie: ^2.3.0
 
 dev_dependencies:
   flutter_test:
@@ -72,6 +73,7 @@ flutter:
     - assets/rocket1.png
     - assets/rocket2.png
     - assets/rocket3.png
+    - assets/check.json
   #   - images/a_do_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
