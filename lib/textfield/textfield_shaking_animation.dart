@@ -126,12 +126,15 @@ class _TextFieldShakingAnimationState extends State<TextFieldShakingAnimation>
             Center(
               child: GlowingLoginButton(
                 onPressed: () {
-                  _formKey.currentState?.validate();
-                  if (_emailEditingController.text.isEmpty ||
-                      _passwordEditingController.text.isEmpty) {
-                    shake();
+                  if (_formKey.currentState!.validate()) {
+                    print('success');
+                    showDialog(
+                      context: context,
+                      builder: (context) =>
+                          Lottie.asset('assets/check.json', animate: true),
+                    );
                   } else {
-                    Lottie.asset('assets/check.json');
+                    shake();
                   }
                 },
                 text: 'Login',
