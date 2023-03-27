@@ -1,6 +1,8 @@
+import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
 import 'animations/drawer_animation_screen.dart';
 import 'animations/search_bar_animation.dart';
+import 'animations/theme_changer.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,10 +13,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
-        theme: ThemeData.dark(),
-        home: const DrawerAniamtionScreen());
+     final isPlatformDark =
+        WidgetsBinding.instance.window.platformBrightness == Brightness.dark;
+    final initTheme = isPlatformDark ? ThemeData.dark() : ThemeData.light();
+    return ThemeProvider(
+      initTheme: initTheme,
+      builder: (_, myTheme) {
+        return MaterialApp(
+          title: 'Flutter Demo',
+          theme: myTheme,
+          home: const ThemeChanger(),
+        );
+      },
+    );;
   }
 }
