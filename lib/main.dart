@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'animations/drawer_animation_screen.dart';
 import 'animations/search_bar_animation.dart';
 import 'animations/theme_changer.dart';
+import 'gradient/gradient.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,9 +23,9 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           title: 'Flutter Demo',
           theme: myTheme,
-          home: const ThemeChanger(),
+          home: const GradientContainer(),
         );
       },
-    );;
+    );
   }
 }
