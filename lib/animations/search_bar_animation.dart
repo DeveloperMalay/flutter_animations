@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/search_bar_widget.dart';
+
 
 class SearchBarAnimation extends StatefulWidget {
   const SearchBarAnimation({Key? key}) : super(key: key);
@@ -12,7 +12,6 @@ class SearchBarAnimation extends StatefulWidget {
 class _SearchBarAnimationState extends State<SearchBarAnimation>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
-  late Animation<double> _animation;
   TextEditingController searchController = TextEditingController();
   bool clicked = false;
   @override
@@ -22,12 +21,6 @@ class _SearchBarAnimationState extends State<SearchBarAnimation>
       duration: const Duration(milliseconds: 1000),
     );
 
-    _animation = Tween<double>(begin: 0, end: 150).animate(
-      CurvedAnimation(
-        parent: _animationController,
-        curve: Curves.easeInOut,
-      ),
-    );
 
     super.initState();
   }

@@ -1,10 +1,8 @@
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
-import 'animations/drawer_animation_screen.dart';
-import 'animations/search_bar_animation.dart';
-import 'animations/theme_changer.dart';
-import 'gradient/gradient.dart';
-import 'new_authenticatoin_page/sign_up_page.dart';
+
+import 'circular_rotation/circular_rotation_page.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +13,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     final isPlatformDark =
+    final isPlatformDark =
         WidgetsBinding.instance.window.platformBrightness == Brightness.dark;
     final initTheme = isPlatformDark ? ThemeData.dark() : ThemeData.light();
     return ThemeProvider(
@@ -24,7 +22,7 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           title: 'Flutter Demo',
           theme: myTheme,
-          home: const MainSignUpPage(),
+          home: SolarSystemView(),
         );
       },
     );

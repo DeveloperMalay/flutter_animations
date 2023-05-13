@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:opacitydemoapp/animations/ripple_animation.dart';
-import 'package:opacitydemoapp/login_screen/login_screen.dart';
-import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+
 
 import 'nav_bar.dart';
 

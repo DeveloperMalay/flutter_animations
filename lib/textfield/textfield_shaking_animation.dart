@@ -1,4 +1,4 @@
-import 'dart:async';
+
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -17,8 +17,6 @@ class _TextFieldShakingAnimationState extends State<TextFieldShakingAnimation>
   late AnimationController controller;
   late GlobalKey<FormState> _formKey;
 
-  late TextEditingController _emailEditingController;
-  late TextEditingController _passwordEditingController;
   void _updateStatus(AnimationStatus status) {
     if (status == AnimationStatus.completed) {
       controller.reset();
@@ -41,8 +39,6 @@ class _TextFieldShakingAnimationState extends State<TextFieldShakingAnimation>
       vsync: this,
       duration: const Duration(milliseconds: 800),
     );
-    _emailEditingController = TextEditingController();
-    _passwordEditingController = TextEditingController();
     super.initState();
   }
 

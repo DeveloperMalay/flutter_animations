@@ -1,6 +1,6 @@
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart' show timeDilation;
+
 import 'package:flutter_switch/flutter_switch.dart';
 
 ThemeData newTheme = ThemeData(primaryColor: Colors.amber);
