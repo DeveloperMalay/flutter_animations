@@ -1,8 +1,8 @@
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
+import 'package:opacitydemoapp/animations/swipe_writer_animation.dart';
 
 import 'circular_rotation/circular_rotation_page.dart';
-
 
 void main() {
   runApp(const MyApp());
@@ -21,8 +21,9 @@ class MyApp extends StatelessWidget {
       builder: (_, myTheme) {
         return MaterialApp(
           title: 'Flutter Demo',
+          debugShowCheckedModeBanner: false,
           theme: myTheme,
-          home: SolarSystemView(),
+          home: const SwipeRightAnimation(),
         );
       },
     );
