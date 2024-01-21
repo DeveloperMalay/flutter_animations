@@ -1,8 +1,7 @@
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
-import 'package:opacitydemoapp/animations/swipe_writer_animation.dart';
+import 'package:opacitydemoapp/animations/swipe_right_animation.dart';
 
-import 'circular_rotation/circular_rotation_page.dart';
 
 void main() {
   runApp(const MyApp());
