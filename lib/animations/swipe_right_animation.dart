@@ -16,8 +16,6 @@ class _SwipeRightAnimationState extends State<SwipeRightAnimation>
   bool rightIconClicked = true;
   late AnimationController _shrinkController;
   late Animation<double> _shrinkAnimation;
-  late AnimationController _iconZoomController;
-  late Animation<double> _iconZoomAnimation;
   int currentIndex = 0;
   @override
   void initState() {
@@ -26,19 +24,6 @@ class _SwipeRightAnimationState extends State<SwipeRightAnimation>
       vsync: this,
       duration: const Duration(milliseconds: 500),
       reverseDuration: const Duration(milliseconds: 500),
-    );
-
-    _iconZoomController = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 500),
-      reverseDuration: const Duration(milliseconds: 500),
-    );
-
-    _iconZoomAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(
-        parent: _iconZoomController,
-        curve: Curves.easeOutExpo,
-      ),
     );
 
     _shrinkAnimation = Tween<double>(begin: 1.0, end: 0.0).animate(
@@ -54,7 +39,7 @@ class _SwipeRightAnimationState extends State<SwipeRightAnimation>
         setState(() {
           showIcon = true;
         });
-        _iconZoomController.forward();
+
         Future.delayed(const Duration(milliseconds: 1500), () {
           _pageController.animateToPage(
             currentIndex,
@@ -65,16 +50,10 @@ class _SwipeRightAnimationState extends State<SwipeRightAnimation>
             showIcon = false;
           });
         });
-      }
-    });
-
-    _iconZoomAnimation.addStatusListener((status) {
-      if (status == AnimationStatus.completed) {
-        debugPrint('Icon Animation completed');
-        _iconZoomController.reverse();
         _shrinkController.reverse();
       }
     });
+
     super.initState();
   }
 
@@ -87,7 +66,6 @@ class _SwipeRightAnimationState extends State<SwipeRightAnimation>
   @override
   void dispose() {
     _shrinkController.dispose();
-    _iconZoomController.dispose();
     _pageController.dispose();
     super.dispose();
   }
@@ -95,17 +73,17 @@ class _SwipeRightAnimationState extends State<SwipeRightAnimation>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: false,
-        title: const Text('Home'),
-        elevation: 20,
-        actions: const [
-          Padding(
-            padding: EdgeInsets.only(right: 10),
-            child: Icon(Icons.settings_rounded),
-          )
-        ],
-      ),
+      // appBar: AppBar(
+      //   centerTitle: false,
+      //   title: const Text('Home'),
+      //   elevation: 20,
+      //   actions: const [
+      //     Padding(
+      //       padding: EdgeInsets.only(right: 10),
+      //       child: Icon(Icons.settings_rounded),
+      //     )
+      //   ],
+      // ),
       body: PageView.builder(
           physics: const NeverScrollableScrollPhysics(),
           controller: _pageController,
@@ -334,7 +312,7 @@ class _SwipeRightAnimationState extends State<SwipeRightAnimation>
 }
 
 //* button design
-class ButtonWidget extends StatelessWidget {
+class ButtonWidget extends StatefulWidget {
   const ButtonWidget({
     super.key,
     required this.ontap,
@@ -344,26 +322,70 @@ class ButtonWidget extends StatelessWidget {
   final VoidCallback ontap;
   final Widget icon;
   final double padding;
+
   @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: ontap,
-      child: Container(
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(100),
-            color: const Color.fromARGB(255, 40, 38, 38),
-            boxShadow: const [
-              BoxShadow(
-                color: Colors.grey,
-                blurRadius: 10,
-                offset: Offset(5, 5),
-                spreadRadius: 1,
-              )
-            ]),
-        padding: EdgeInsets.all(padding),
-        child: icon,
+  State<ButtonWidget> createState() => _ButtonWidgetState();
+}
+
+class _ButtonWidgetState extends State<ButtonWidget>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _animation;
+  @override
+  void initState() {
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 100),
+      reverseDuration: const Duration(milliseconds: 200),
+    );
+    _animation = Tween<double>(begin: 1.0, end: 0.9).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: Curves.easeIn,
       ),
     );
+    _controller.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        _controller.reverse();
+      }
+    });
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+        animation: _controller,
+        builder: (context, c) {
+          return ScaleTransition(
+            scale: _animation,
+            child: GestureDetector(
+              onTap: () {
+                _controller.forward();
+                Future.delayed(
+                  const Duration(milliseconds: 100),
+                  widget.ontap,
+                );
+                // widget.ontap.call();
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(100),
+                    color: const Color.fromARGB(255, 40, 38, 38),
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Colors.grey,
+                        blurRadius: 10,
+                        offset: Offset(5, 5),
+                        spreadRadius: 1,
+                      )
+                    ]),
+                padding: EdgeInsets.all(widget.padding),
+                child: widget.icon,
+              ),
+            ),
+          );
+        });
   }
 }
 
