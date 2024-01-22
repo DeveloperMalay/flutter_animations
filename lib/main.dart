@@ -1,7 +1,6 @@
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
-import 'package:opacitydemoapp/animations/swipe_right_animation.dart';
-
+import 'package:opacitydemoapp/sliver_design/multi_sliver_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,7 +21,7 @@ class MyApp extends StatelessWidget {
           title: 'Flutter Demo',
           debugShowCheckedModeBanner: false,
           theme: myTheme,
-          home: const SwipeRightAnimation(),
+          home: const MultiSliverScreen(),
         );
       },
     );
